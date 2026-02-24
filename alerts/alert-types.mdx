@@ -1,0 +1,80 @@
+---
+title: "Alert types"
+description: "Reference for every alert trigger available in Previa and how to configure each one."
+---
+
+Previa supports four types of alert triggers. Each monitors a different aspect of a market.
+
+## Price threshold
+
+Fires when a market's price crosses a value you define.
+
+**Configuration:**
+
+| Field | Description |
+|---|---|
+| Side | Which price to monitor: **YES** or **NO** |
+| Direction | **Above**, **Below**, or **Crosses** (fires in either direction) |
+| Threshold | The price value (0.01 to 0.99) that triggers the alert |
+
+**Example:** Alert me when the YES price goes above 0.75 on "Will Bitcoin exceed $100K?"
+
+**When to use:** You have a specific entry or exit price in mind and want to know when the market reaches it.
+
+## Score shift
+
+Fires when the AI confidence score changes by a specified amount between scoring cycles.
+
+**Configuration:**
+
+| Field | Description |
+|---|---|
+| Delta threshold | Minimum score change to trigger (e.g., 10 points) |
+| Direction | **Up** (score increased), **Down** (score decreased), or **Any** |
+
+**Example:** Alert me when the confidence score on any watchlisted market drops by 15 or more points.
+
+**When to use:** You want to catch significant changes in the AI's assessment, which often correspond to breaking news or sentiment shifts.
+
+<Tip>
+Score alerts are evaluated every 10 minutes (the scoring cycle interval). Set a delta of at least 5 to avoid noise from minor fluctuations.
+</Tip>
+
+## News catalyst
+
+Fires when a news article matching a high impact threshold is linked to the market.
+
+**Configuration:**
+
+| Field | Description |
+|---|---|
+| Impact level | **High**, **Medium**, or **Any** |
+
+**Example:** Alert me when high-impact news is matched to my watchlisted political markets.
+
+**When to use:** You want to be the first to know when relevant news breaks that could move the market.
+
+## Volume spike
+
+Fires when the market's 24-hour trading volume exceeds a multiple of its recent baseline.
+
+**Configuration:**
+
+| Field | Description |
+|---|---|
+| Multiplier | How many times the baseline volume must be exceeded (e.g., 2x, 3x, 5x) |
+| Lookback days | Number of days used to calculate the baseline average (default: 7) |
+
+**Example:** Alert me when volume on "Fed rate decision" is 3x its 7-day average.
+
+**When to use:** Volume spikes often precede or accompany significant price moves. This alert catches unusual trading activity.
+
+## Optional settings for all alert types
+
+These settings apply to any alert type:
+
+| Setting | Description |
+|---|---|
+| Max triggers | Maximum number of times the alert can fire before auto-pausing. Leave blank for unlimited. |
+| Expiration | A date after which the alert automatically expires. Useful for time-bound markets. |
+| Channels | Push, email, in-app — select one or more. |

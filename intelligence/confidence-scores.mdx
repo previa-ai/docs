@@ -1,0 +1,58 @@
+---
+title: "Confidence scores"
+description: "What Previa's AI confidence score means and how to interpret it for any market."
+---
+
+Every active market on Previa receives a **confidence score** — a number from 0 to 100 that represents the AI's assessment of the market's current state based on multiple data signals.
+
+## Reading a confidence score
+
+The score appears as a colored ring on market cards and detail pages:
+
+| Score range | Color | Interpretation |
+|---|---|---|
+| 70 – 100 | Green | Strong signal — multiple data sources agree on direction |
+| 40 – 69 | Yellow | Mixed signal — some supporting evidence but conflicting indicators |
+| 0 – 39 | Red | Weak or uncertain — limited data or signals point in different directions |
+
+<Note>
+A high score does not mean "buy YES" and a low score does not mean "buy NO." The score reflects the strength and consistency of available signals, not a directional trade recommendation.
+</Note>
+
+## What the score is built from
+
+The confidence score combines five weighted components:
+
+| Component | Weight | Source |
+|---|---|---|
+| **Market price signal** | 40% | Current price, price momentum, and recent trajectory |
+| **News signal** | 25% | AI-analyzed news articles matched to the market by semantic similarity |
+| **Social sentiment** | 15% | Aggregated sentiment from X (Twitter), Reddit, and Telegram |
+| **Historical patterns** | 15% | How similar markets have behaved and resolved historically |
+| **Time decay** | 5% | Proximity to market resolution date |
+
+See [how scoring works](/intelligence/how-scoring-works) for the technical methodology.
+
+## Score breakdowns (Pro / Premium)
+
+On the **Pro** and **Premium** plans, you can see the individual breakdown of each component on the market detail page. This shows exactly how much each signal contributed to the final score.
+
+Free users see only the composite number. Upgrading unlocks:
+
+- Per-component scores and their contribution percentages
+- AI-generated reasoning explaining why the score is what it is
+- Key news sources and sentiment data that influenced the score
+
+## Score updates
+
+Scores are recalculated every 10 minutes. When a score changes significantly (more than 10 points), Previa generates a **score alert** that you can subscribe to via the [alerts system](/alerts/setting-up-alerts).
+
+## Score alerts
+
+If a market's score shifts dramatically, Previa flags it. This can indicate:
+
+- Breaking news affecting the outcome
+- A sudden change in social sentiment
+- A sharp price move driven by informed trading
+
+You can set up [score shift alerts](/alerts/alert-types#score-shift) to be notified when this happens on markets you're watching.

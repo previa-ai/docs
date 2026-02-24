@@ -1,0 +1,80 @@
+---
+title: "Setting up alerts"
+description: "Create alerts to get notified when something important happens in a market you're tracking."
+---
+
+Alerts notify you when a market hits a condition you define — a price target, a score shift, breaking news, or a volume spike. You choose the market, the trigger, and how you want to be notified.
+
+## Creating an alert
+
+<Steps>
+  <Step title="Open the alert creation form">
+    You can create an alert from two places:
+    - **Alerts tab** → tap **Create Alert** at the top.
+    - **Market detail page** → tap the **Create Alert** button in the actions row. The market is pre-filled.
+  </Step>
+  <Step title="Select a market">
+    If you didn't come from a market detail page, search for and select the market you want to monitor.
+  </Step>
+  <Step title="Choose a trigger type">
+    Pick what condition should fire the alert:
+    - **Price threshold** — When the price goes above or below a value you set.
+    - **Score shift** — When the AI confidence score changes by a specified amount.
+    - **News catalyst** — When a high-impact news article is matched to the market.
+    - **Volume spike** — When trading volume surges above its recent baseline.
+
+    See [alert types](/alerts/alert-types) for details on configuring each trigger.
+  </Step>
+  <Step title="Select delivery channels">
+    Choose how you want to be notified:
+    - **Push notification** — Sent to your phone or browser (requires notification permissions).
+    - **Email** — Sent to your account email.
+    - **In-app** — Appears in the Alerts tab with an unread badge.
+
+    You can enable multiple channels for the same alert.
+  </Step>
+  <Step title="Save the alert">
+    Tap **Create**. The alert starts monitoring immediately.
+  </Step>
+</Steps>
+
+## Managing alerts
+
+### Viewing alerts
+
+The **Alerts** tab shows two things:
+
+1. **Alert events** — Notifications from alerts that have fired. New events show an unread dot.
+2. **Alert rules** — Your configured alert rules and their status.
+
+### Editing an alert
+
+Tap an alert rule to open it. You can change the trigger conditions, delivery channels, or pause it.
+
+### Pausing and resuming
+
+You can pause an alert rule without deleting it. Paused alerts stop evaluating until you resume them.
+
+### Deleting an alert
+
+Swipe left on an alert rule (mobile) or use the delete option to remove it permanently.
+
+## Alert limits
+
+| Plan | Alert limit |
+|---|---|
+| Free | 5 alerts |
+| Pro | 50 alerts |
+| Premium | Unlimited |
+| Institutional | Unlimited |
+
+Alerts are also rate-limited to **20 notifications per day** per account to prevent notification fatigue.
+
+## How alerts are evaluated
+
+Previa evaluates your alert rules periodically. When a rule's conditions are met:
+
+1. A notification is created and delivered via your selected channels.
+2. The alert event appears in your Alerts tab.
+3. If you set a max trigger count, it's decremented.
+4. If the alert has an expiration date and it's passed, the alert is set to expired.

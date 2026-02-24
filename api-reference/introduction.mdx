@@ -1,33 +1,42 @@
 ---
-title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+title: "API reference"
+description: "Programmatic access to Previa's market data, AI scores, and alerts."
+tag: "Coming Soon"
 ---
 
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
+The Previa API will give developers programmatic access to prediction market data, AI confidence scores, and alert management.
 
-## Welcome
+<Info>
+The public API is currently in development. This page will be updated with full endpoint documentation, authentication guides, and code examples when the API launches. API access will be available on **Premium** and **Institutional** plans.
+</Info>
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
+## Planned capabilities
 
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
+| Capability | Description |
+|---|---|
+| **Market data** | Query markets across platforms with filters for category, platform, and status |
+| **AI scores** | Retrieve confidence scores and breakdowns for any market |
+| **Alerts** | Create, update, and manage alert rules programmatically |
+| **Webhooks** | Subscribe to real-time events (score changes, alert triggers, market resolutions) |
+| **Bulk export** | Download historical market data and scoring history |
 
 ## Authentication
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+API access will use API keys generated from your Previa account. Keys will support:
 
-```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
-```
+- Per-key rate limiting
+- Scoped permissions (read-only, read-write)
+- Usage metering and billing
+
+## Rate limits
+
+Rate limits will vary by plan:
+
+| Plan | Rate limit |
+|---|---|
+| Premium | 100 requests/minute |
+| Institutional | Custom (up to 1,000+ requests/minute) |
+
+## Get notified
+
+[Join the waitlist](https://useprevia.com/contact) to be notified when the API launches. Institutional customers can [contact us](https://useprevia.com/contact) to discuss early access.

@@ -1,0 +1,75 @@
+---
+title: "Connecting your accounts"
+description: "Link your Kalshi or Polymarket accounts to Previa to track positions and P&L."
+---
+
+Previa can sync your prediction market positions from Kalshi and Polymarket, giving you a unified portfolio view with P&L tracking. Portfolio tracking is available on **Pro**, **Premium**, and **Institutional** plans.
+
+## Connecting Kalshi
+
+Kalshi uses API credentials for account linking.
+
+<Steps>
+  <Step title="Generate API credentials on Kalshi">
+    1. Log in to [kalshi.com](https://kalshi.com).
+    2. Go to **Account** → **Security** → **API Keys**.
+    3. Click **Generate API Key**.
+    4. Copy the **API Key** (a UUID string) and download the **RSA Private Key** (PEM file).
+
+    <Warning>
+    Store your private key securely. It cannot be retrieved after you leave the page. If you lose it, you'll need to generate a new key pair.
+    </Warning>
+  </Step>
+  <Step title="Enter credentials in Previa">
+    1. Go to **Settings** → **Linked Accounts** (or **Portfolio** → **Link Account**).
+    2. Select **Kalshi**.
+    3. Paste your **API Key** and **API Secret** (the private key content).
+    4. Tap **Connect**.
+  </Step>
+  <Step title="Verify connection">
+    Previa validates your credentials by checking your Kalshi account balance. If successful, the connection shows as **Active** and your positions begin syncing.
+  </Step>
+</Steps>
+
+Your Kalshi credentials are encrypted before storage and are only used to read your positions. Previa never places trades on your behalf.
+
+## Connecting Polymarket
+
+Polymarket uses your wallet address for position tracking.
+
+<Steps>
+  <Step title="Find your Polymarket wallet address">
+    Your Polymarket wallet address is the Ethereum/Polygon address you use to trade on Polymarket.
+  </Step>
+  <Step title="Enter your wallet address in Previa">
+    1. Go to **Settings** → **Linked Accounts** (or **Portfolio** → **Link Account**).
+    2. Select **Polymarket**.
+    3. Enter your wallet address.
+    4. Tap **Connect**.
+  </Step>
+  <Step title="Verify connection">
+    Previa validates the address and fetches your positions from Polymarket's public API. If positions are found, the connection shows as **Active**.
+  </Step>
+</Steps>
+
+<Note>
+Polymarket position tracking uses public CLOB API data. Full on-chain USDC position reads and more granular P&L calculations are on the roadmap.
+</Note>
+
+## Connection status
+
+Each connected account shows a status:
+
+| Status | Meaning |
+|---|---|
+| **Active** | Credentials are valid, positions are syncing |
+| **Invalid** | Credentials are no longer valid (e.g., API key revoked). Reconnect with new credentials. |
+| **Disconnected** | You manually disconnected the account |
+
+## Disconnecting an account
+
+Go to **Settings** → **Linked Accounts**, select the platform, and tap **Disconnect**. Your stored credentials are deleted immediately. Historical position data is retained in your account until you [request data deletion](/account/data-privacy).
+
+## Sync frequency
+
+Positions sync automatically every 15 minutes. You can force a manual sync from the Portfolio tab by pulling down to refresh.

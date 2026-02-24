@@ -1,0 +1,47 @@
+---
+title: "Supported platforms"
+description: "Prediction market platforms that Previa aggregates data from, and what data is available from each."
+---
+
+Previa aggregates market data from multiple prediction market platforms into a single interface. Each platform has different data availability and connection options.
+
+## Kalshi
+
+[Kalshi](https://kalshi.com) is a US-regulated prediction market exchange (CFTC-regulated). Markets cover politics, economics, weather, tech, and more.
+
+**What Previa pulls from Kalshi:**
+- Live market listings and metadata
+- Real-time YES/NO prices
+- 24-hour volume and liquidity
+- Historical OHLCV price data (candlesticks)
+- Market resolution status
+
+**Portfolio tracking:** Connect your Kalshi account using your API key and secret to track open positions and P&L. Available on Pro and Premium plans.
+
+## Polymarket
+
+[Polymarket](https://polymarket.com) is a decentralized prediction market built on Polygon. It's one of the largest prediction markets by volume.
+
+**What Previa pulls from Polymarket:**
+- Live market listings and metadata
+- Real-time YES/NO prices via the CLOB API
+- Volume and liquidity data
+- Historical price data
+
+**Portfolio tracking:** Connect your Polymarket wallet address to track positions. Available on Pro and Premium plans.
+
+<Note>
+Polymarket portfolio tracking is being improved. Currently, the connection validates your wallet address and fetches positions from the public CLOB API. Full on-chain USDC position reads are on the roadmap.
+</Note>
+
+## Coming soon
+
+Additional platforms are planned for future releases:
+
+| Platform | Type | Status |
+|---|---|---|
+| Metaculus | Community forecasting | Planned |
+| Manifold | Play-money prediction market | Planned |
+| PredictIt | Political prediction market | Planned |
+
+Data from new platforms will appear in the same unified market scanner — no configuration needed on your end.

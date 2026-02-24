@@ -1,0 +1,83 @@
+---
+title: "How scoring works"
+description: "A transparent look at how Previa's AI calculates confidence scores from market data, news, sentiment, and historical patterns."
+---
+
+Previa's scoring engine runs every 10 minutes across all active markets. It combines five data signals into a single 0-100 composite score.
+
+## The five scoring components
+
+### 1. Market price signal (40% weight)
+
+The largest component. The scoring engine analyzes:
+
+- **Current price** — Where the YES/NO contract is trading right now
+- **Price momentum** — Direction and velocity of recent price movement
+- **Price trajectory** — Whether the trend is accelerating, decelerating, or reversing
+
+This captures what the market's collective intelligence is pricing in.
+
+### 2. News signal (25% weight)
+
+Previa ingests news articles from multiple sources and maps them to markets using AI:
+
+1. **Ingestion** — Articles are fetched from news providers every 15 minutes, deduplicated, and stored.
+2. **Analysis** — Each article is analyzed by an AI model (Claude) for topic, sentiment, and potential market impact.
+3. **Matching** — Articles are matched to relevant markets using semantic similarity (OpenAI embeddings). An article must exceed a 0.7 similarity threshold to be mapped.
+4. **Scoring** — The aggregate sentiment and impact of matched articles feeds into the market's score.
+
+### 3. Social sentiment (15% weight)
+
+<Note>
+The social intelligence layer is being expanded. Sentiment data is currently available for markets with active social discussion. Coverage will grow as more sources are integrated.
+</Note>
+
+Social sentiment is gathered from X (Twitter), Reddit, and Telegram. The engine calculates:
+
+- **Weighted sentiment** — Each post is scored for sentiment, weighted by the source's credibility
+- **Rolling windows** — Sentiment is aggregated over 1-hour, 6-hour, and 24-hour windows
+- **Anomaly detection** — Sudden sentiment shifts or volume spikes are flagged
+
+### 4. Historical patterns (15% weight)
+
+For markets with enough historical data, the engine compares:
+
+- **Similar resolved markets** — How markets with comparable characteristics resolved
+- **Category trends** — How markets in the same category tend to behave
+
+This component strengthens over time as more markets resolve and the dataset grows.
+
+### 5. Time decay (5% weight)
+
+As a market approaches its resolution date, the time decay factor increases. This reflects the narrowing window for price movement and the increasing weight of existing evidence.
+
+## Score calculation
+
+Each component produces a sub-score from 0 to 100. The composite score is the weighted sum:
+
+```
+composite = (price × 0.40) + (news × 0.25) + (social × 0.15) + (historical × 0.15) + (decay × 0.05)
+```
+
+The result is rounded to the nearest integer.
+
+## AI reasoning
+
+When a market's score changes by 5 or more points between cycles, the scoring engine generates a natural-language explanation using Claude. This reasoning:
+
+- Identifies which component(s) drove the change
+- Summarizes the key evidence (news articles, price movements, sentiment shifts)
+- Provides context for why the score moved
+
+Reasoning is available to **Pro** and **Premium** users on the market detail page.
+
+## Score alerts
+
+When a score changes by more than 10 points in a single cycle, a **score alert** is generated. You can subscribe to these alerts for specific markets. See [alert types](/alerts/alert-types#score-shift).
+
+## Limitations
+
+- Scores reflect the data available to Previa at scoring time. They do not account for insider information or events that haven't been reported.
+- The social component depends on public discussion volume. Low-profile markets may have limited social signal.
+- Historical comparisons are strongest for categories with many resolved markets (politics, economics) and weakest for novel or one-off events.
+- Scores are analytical signals, not trade recommendations.

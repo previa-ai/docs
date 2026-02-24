@@ -1,11 +1,11 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Previa",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#4361EE",
+    "light": "#6C8AFF",
+    "dark": "#3451DE"
   },
   "favicon": "/favicon.svg",
   "navigation": {
@@ -15,35 +15,42 @@
         "groups": [
           {
             "group": "Getting started",
+            "pages": ["index", "quickstart", "supported-platforms"]
+          },
+          {
+            "group": "Markets",
             "pages": [
-              "index",
-              "quickstart",
-              "development"
+              "markets/browsing-markets",
+              "markets/market-detail",
+              "markets/watchlist"
             ]
           },
           {
-            "group": "Customization",
+            "group": "AI intelligence",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
+              "intelligence/confidence-scores",
+              "intelligence/insights-feed",
+              "intelligence/how-scoring-works"
             ]
           },
           {
-            "group": "Writing content",
+            "group": "Alerts & notifications",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
+              "alerts/setting-up-alerts",
+              "alerts/alert-types",
+              "alerts/notification-preferences"
             ]
           },
           {
-            "group": "AI tools",
+            "group": "Portfolio",
             "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+              "portfolio/connecting-accounts",
+              "portfolio/tracking-positions"
             ]
+          },
+          {
+            "group": "Plans & billing",
+            "pages": ["plans/overview", "plans/upgrading"]
           }
         ]
       },
@@ -52,18 +59,7 @@
         "groups": [
           {
             "group": "API documentation",
-            "pages": [
-              "api-reference/introduction"
-            ]
-          },
-          {
-            "group": "Endpoint examples",
-            "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
-            ]
+            "pages": ["api-reference/introduction"]
           }
         ]
       }
@@ -71,14 +67,14 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "anchor": "Changelog",
+          "href": "https://useprevia.com/changelog",
+          "icon": "clock-rotate-left"
         },
         {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "anchor": "Contact support",
+          "href": "https://useprevia.com/contact",
+          "icon": "envelope"
         }
       ]
     }
@@ -91,32 +87,19 @@
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "https://useprevia.com/contact"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Open Previa",
+      "href": "https://app.useprevia.com"
     }
-  },
-  "contextual": {
-    "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "x": "https://x.com/previa-ai",
+      "linkedin": "https://linkedin.com/company/previa-ai"
     }
   }
 }
