@@ -3,24 +3,28 @@ title: "Market details"
 description: "Everything you see on a market's detail page — prices, charts, AI scores, news, and available actions."
 ---
 
-Tap any market card in the scanner to open its detail page. This page gives you a full picture of the market and the AI intelligence behind it.
+Select any market in the scanner to open its detail page. This page gives you a complete view of the market and the intelligence behind it.
 
 ## Price and stats
 
 At the top of the page:
 
 - **Market question** — The full prediction being traded.
-- **YES price** — The current cost of a YES contract (displayed prominently with color coding).
+- **YES price** — The current cost of a YES contract (color-coded: green when above 60¢, red when below 40¢).
 - **NO price** — The current cost of a NO contract.
-- **24h change** — Price movement over the last 24 hours (green for up, red for down).
-- **Volume** — Total trading volume.
-- **Liquidity** — How much capital is available in the order book.
+- **Volume 24h** — Trading volume over the past 24 hours.
+- **Liquidity** — Capital available in the order book.
 - **Expires** — Countdown to market resolution.
-- **Platform and category badges** — Which exchange and topic.
+- **Last updated** — When the data was most recently fetched from the platform.
+- **Platform, status, and category badges** — Which exchange, current market state, and topic.
+
+## Event context
+
+If the market belongs to a multi-outcome event (e.g., "Who wins the 2026 election?" with one market per candidate), a banner at the top links to the parent event. You can also see other outcomes in the same event — each shows its current YES price so you can compare probabilities across the set.
 
 ## Price chart
 
-Below the stats, a line chart shows historical price movement. Select a time range to adjust the view:
+Below the stats, a line chart shows historical price movement. Previa fetches OHLCV candlestick data from each platform:
 
 | Range | Shows |
 |---|---|
@@ -29,25 +33,35 @@ Below the stats, a line chart shows historical price movement. Select a time ran
 | 1D | Last 24 hours |
 | 1W | Last 7 days |
 | 1M | Last 30 days |
-| ALL | Full market history |
+| ALL | Full available history |
 
-Touch or hover over the chart to see a crosshair with the exact price and timestamp at that point.
+Touch or hover over the chart to see the exact price and timestamp at that point.
 
-## AI intelligence panel
+## Intelligence tabs
 
-Below the chart, the AI panel shows Previa's analysis:
+Below the price chart, a tab bar organizes the AI analysis and supporting signals:
 
-- **Confidence score** — A 0-100 score displayed in a circular ring. Color-coded: green (70+), yellow (40-69), red (below 40).
-- **Score breakdown** — How much each signal contributed to the overall score.
-- **AI reasoning** — A 2-3 sentence explanation of why the AI rates the market at this level.
+<Tabs>
+  <Tab title="Scores">
+    Previa's confidence score and the breakdown of what drives it. See [AI intelligence](/intelligence/confidence-scores) for details.
+  </Tab>
+  <Tab title="News">
+    News articles matched to this market. Articles are ranked by relevance and recency.
+  </Tab>
+  <Tab title="Social">
+    Aggregate sentiment from X, Reddit, and Telegram threads related to this market's topic.
+  </Tab>
+  <Tab title="Alerts">
+    Score-based alerts triggered for this market. Each alert shows the previous and new score, the delta, and when it fired.
+  </Tab>
+  <Tab title="Raw data">
+    The full JSON payload returned by the platform API for this market. Useful for verifying data or debugging discrepancies.
+  </Tab>
+</Tabs>
 
-<Note>
-Score breakdowns and AI reasoning are available on **Pro** and **Premium** plans. Free users see the composite score but not the detailed breakdown. A paywall overlay shows what you'd unlock by upgrading.
-</Note>
+## AI confidence score
 
-### Score components
-
-The confidence score is built from these weighted signals:
+The confidence score is a 0–100 number built from weighted signals:
 
 | Component | Weight | What it measures |
 |---|---|---|
@@ -57,19 +71,24 @@ The confidence score is built from these weighted signals:
 | Historical patterns | 15% | How similar markets have resolved in the past |
 | Time decay | 5% | How close the market is to resolution |
 
+<Note>
+Score breakdowns and AI reasoning are available on **Pro** and **Premium** plans. Free users see the composite score only.
+</Note>
+
 See [how scoring works](/intelligence/how-scoring-works) for the full methodology.
 
 ## Actions
 
-At the bottom of the market detail page, you'll find action buttons:
+Action buttons are available at the top of the detail page:
 
 | Action | What it does |
 |---|---|
-| **Save** (heart icon) | Add or remove the market from your [watchlist](/markets/watchlist) |
-| **Create alert** | Opens the alert creation form pre-filled with this market. See [setting up alerts](/alerts/setting-up-alerts). |
+| **Save** (watchlist) | Add or remove the market from your [watchlist](/markets/watchlist) |
+| **Create alert** | Opens the alert form pre-filled for this market. See [setting up alerts](/alerts/setting-up-alerts). |
 | **Share** | Opens your device's native share sheet to send the market link |
-| **Trade on [Platform]** | Opens the market's page on Kalshi or Polymarket in your browser so you can place trades directly |
+| **Trade on [Platform]** | Opens the market on Kalshi or Polymarket in your browser |
+| **View on Polygonscan** | (Polymarket only) Opens the on-chain contract page to verify the market's condition ID |
 
 <Warning>
-Previa is an intelligence and analytics tool. It does not execute trades. The "Trade" button opens the prediction market platform where you can place orders with your own account.
+Previa is an analytics tool. It does not execute trades. The "Trade" button opens the prediction market platform where you place orders with your own account.
 </Warning>

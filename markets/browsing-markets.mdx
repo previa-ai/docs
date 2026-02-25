@@ -3,29 +3,40 @@ title: "Browsing markets"
 description: "How to find, filter, and search prediction markets across Kalshi and Polymarket."
 ---
 
-The **Markets** tab is the main screen of Previa. It shows live prediction markets from supported platforms in a single, searchable list.
+The **Markets** tab shows live prediction markets from supported platforms in a single, searchable list. Markets update continuously as data is polled from each platform.
 
-## The market scanner
+## What each market shows
 
-Each market card shows:
+Each market entry displays:
 
 - **Question** — The prediction being traded (e.g., "Will Bitcoin exceed $100K by March 2026?")
-- **YES / NO price** — Current market odds displayed as a price bar (e.g., 72% YES / 28% NO)
+- **YES / NO price** — Current market odds (e.g., 72¢ YES means a 72% implied probability)
 - **Platform badge** — Which exchange the market is on (Kalshi or Polymarket)
-- **Category badge** — The topic area (Politics, Crypto, Economics, etc.)
-- **24h change** — How much the price has moved in the last 24 hours
-- **Volume** — Total trading volume
-- **AI score** — The Previa confidence score (0-100), if available
+- **Category** — The topic area (Politics, Crypto, Economics, etc.)
+- **24h volume** — Trading volume over the past 24 hours
+- **Liquidity** — Capital available in the order book
+- **Status** — Whether the market is open, closed, or resolved
+- **Expires** — When the market closes for trading
+- **Last updated** — How recently the data was fetched from the platform
+- **AI score** — The Previa confidence score (0–100), if available
 
-Tap any card to open the [market detail page](/markets/market-detail).
+Select any market to open its [detail page](/markets/market-detail).
 
 ## Filtering markets
 
-Use the filter bar at the top of the Markets tab to narrow results.
+Use the filter bar to narrow results.
+
+### Status filter
+
+Choose **Open**, **Closed**, or **All** to filter by market state. Open markets default to showing first.
+
+### Platform filter
+
+Choose **All**, **Kalshi**, or **Polymarket** to see markets from a specific exchange.
 
 ### Category filter
 
-Tap a category chip to show only markets in that topic:
+Select one or more categories to show markets on specific topics:
 
 | Category | Examples |
 |---|---|
@@ -40,34 +51,38 @@ Tap a category chip to show only markets in that topic:
 | Climate | Weather events, environmental policy |
 | Finance | Stock market movements, IPOs, mergers |
 
-### Platform filter
-
-Choose **All**, **Kalshi**, or **Polymarket** to see markets from a specific exchange.
-
 ### Sort options
 
 | Sort | Description |
 |---|---|
-| Volume | Highest trading volume first (default) |
-| Newest | Most recently created markets first |
-| Closing Soon | Markets expiring soonest first |
-| AI Score | Highest Previa confidence score first |
+| Yes price | Current YES price, highest first |
+| Volume 24h | Highest 24-hour volume first |
+| Liquidity | Most liquid markets first |
+| Expires | Markets closing soonest first |
 
 ### Search
 
-Type in the search bar to filter by keyword. Search matches against market titles and descriptions. Results update as you type.
+Type in the search bar to filter by keyword. Search matches against market questions and outcomes. Press **Enter** or click **Apply Filters** to run the search.
 
 ## Watchlist segment
 
-At the top of the Markets tab, switch between **All Markets** and **Watchlist**:
+Switch between **All Markets** and **Watchlist**:
 
-- **All Markets** — Every available market matching your filters.
+- **All Markets** — Every available market matching your current filters.
 - **Watchlist** — Only markets you've saved. See [managing your watchlist](/markets/watchlist).
+
+## External links
+
+Each market row includes links to view the market directly on its source platform. For Polymarket markets, an additional link opens the [Polygonscan](https://polygonscan.com) contract page to verify on-chain data.
+
+## Pagination
+
+Markets are paginated server-side. Use the page controls at the bottom of the list to navigate, or change the page size to show more results at once.
 
 ## Responsive layout
 
 - **Mobile (iOS / Android):** Single-column list with pull-to-refresh.
 - **Tablet:** Two-column grid.
-- **Desktop (web):** Two or three-column grid depending on screen width. The sidebar navigation stays visible on the left.
+- **Desktop (web):** Table view with sortable columns. The sidebar navigation stays visible on the left.
 
-Markets auto-refresh in the background every 30 seconds. Pull down on mobile to force a refresh.
+Markets refresh automatically as the poller collects new data from each platform. Use the **Refresh** button to manually fetch the latest data.

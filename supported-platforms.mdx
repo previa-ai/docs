@@ -7,32 +7,52 @@ Previa aggregates market data from multiple prediction market platforms into a s
 
 ## Kalshi
 
-[Kalshi](https://kalshi.com) is a US-regulated prediction market exchange (CFTC-regulated). Markets cover politics, economics, weather, tech, and more.
+[Kalshi](https://kalshi.com) is a US-regulated prediction market exchange (CFTC-regulated). Markets cover politics, economics, weather, tech, sports, and more.
 
 **What Previa pulls from Kalshi:**
-- Live market listings and metadata
+- Live event and market listings with full metadata
 - Real-time YES/NO prices
 - 24-hour volume and liquidity
 - Historical OHLCV price data (candlesticks)
-- Market resolution status
+- Market resolution status and outcome data
+- Series and event groupings (markets organized into events)
+
+**Data freshness:** Kalshi data is polled continuously. Prices and volume figures update whenever the poller fetches new data from the Kalshi Trade API.
 
 **Portfolio tracking:** Connect your Kalshi account using your API key and secret to track open positions and P&L. Available on Pro and Premium plans.
 
 ## Polymarket
 
-[Polymarket](https://polymarket.com) is a decentralized prediction market built on Polygon. It's one of the largest prediction markets by volume.
+[Polymarket](https://polymarket.com) is a decentralized prediction market built on Polygon (an Ethereum Layer 2 network). It is one of the largest prediction markets by volume.
 
 **What Previa pulls from Polymarket:**
-- Live market listings and metadata
-- Real-time YES/NO prices via the CLOB API
-- Volume and liquidity data
-- Historical price data
+- Live event and market listings with full metadata
+- Real-time YES/NO prices via the Central Limit Order Book (CLOB) API
+- 24-hour volume and liquidity from the Gamma and Data APIs
+- Historical price data (OHLCV candlesticks)
+- On-chain condition IDs for independent verification
+
+**Data freshness:** Polymarket data is fetched from three separate APIs (Gamma, Data, and CLOB) and merged into a single normalized record per market.
+
+**On-chain verification:** Every Polymarket market has a condition ID — a contract address on the Polygon blockchain. From any market's detail page, click **View on Polygonscan** to inspect the contract directly.
 
 **Portfolio tracking:** Connect your Polymarket wallet address to track positions. Available on Pro and Premium plans.
 
 <Note>
-Polymarket portfolio tracking is being improved. Currently, the connection validates your wallet address and fetches positions from the public CLOB API. Full on-chain USDC position reads are on the roadmap.
+Polymarket portfolio tracking reads positions from the public CLOB API using your wallet address. Full on-chain USDC balance reads are on the roadmap.
 </Note>
+
+## Data normalization
+
+Previa normalizes data from both platforms into a common format:
+
+| Field | Kalshi source | Polymarket source |
+|---|---|---|
+| YES price | `yes_ask` from Trade API | Best ask from CLOB |
+| NO price | `no_ask` from Trade API | Derived from YES price |
+| Volume 24h | `volume` (24h window) | `volumeNum` from Gamma API |
+| Liquidity | `open_interest` | `liquidityNum` from Gamma API |
+| Expires | `close_time` | `endDateIso` |
 
 ## Coming soon
 
