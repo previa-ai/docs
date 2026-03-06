@@ -1,0 +1,49 @@
+---
+description: Mintlify documentation conventions for Previa user docs
+alwaysApply: true
+---
+
+# Documentation
+
+## Previa Context
+
+This is user-facing documentation for Previa, an AI-powered prediction market intelligence platform. Docs explain how traders use the web app to browse markets, view AI scores, set alerts, link trading accounts, and manage their account.
+
+## Structure
+
+- Navigation defined in `docs.json` — update when adding pages
+- Reusable fragments in `snippets/` — import via MDX
+- Each section maps to a web app feature area
+
+## Writing Rules
+
+- Task-oriented: title = what user wants to do, body = steps, end = expected result
+- Every page stands alone — no "see above" or "as mentioned"
+- Use Mintlify components: `<Card>`, `<CardGroup>`, `<Tabs>`, `<Callout>`, `<Steps>`
+- Lead with the outcome, not the feature name
+- Define prediction market terms on first use
+- Keep quickstart under 5 minutes
+
+## Page Template
+
+```mdx
+---
+title: "Action-Oriented Title"
+description: "One sentence describing what the user will learn"
+---
+
+Brief intro paragraph.
+
+<Steps>
+  <Step title="First step">
+    Instructions with screenshots where helpful.
+  </Step>
+  <Step title="Second step">
+    More instructions.
+  </Step>
+</Steps>
+
+## Next steps
+
+Link to related pages.
+```
